@@ -1,0 +1,227 @@
+/* User management table — Figma DACK_CC node 18-89 */
+.um-table-wrap {
+  width: 100%;
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.um-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.um-table thead th {
+  text-align: left;
+  padding: 0.875rem 1.25rem;
+  background: #f8fafc;
+  font-weight: 600;
+  color: #64748b;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.um-table tbody td {
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--admin-border);
+  color: var(--admin-text);
+  vertical-align: middle;
+}
+
+.um-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.um-table .um-col-actions {
+  text-align: right;
+  width: 1%;
+  white-space: nowrap;
+}
+
+.um-email {
+  color: #64748b;
+  text-decoration: underline;
+}
+
+.um-email:hover {
+  color: var(--admin-heading);
+}
+
+.um-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.um-status--active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.um-status--locked {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.um-unlock {
+  background: #059669;
+}
+
+.um-unlock:focus-visible {
+  outline: 2px solid #059669;
+}
+
+/* Modal styles */
+.um-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.um-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: modal-fade-in 0.2s ease-out;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.um-modal-header {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.um-modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--admin-heading);
+}
+
+.um-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.um-modal-body {
+  padding: 1.25rem;
+}
+
+.um-detail-row {
+  display: flex;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.um-detail-row:last-child {
+  border-bottom: none;
+}
+
+.um-detail-row strong {
+  width: 140px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.um-detail-row span {
+  flex: 1;
+  color: var(--admin-text);
+}
+
+.um-modal-footer {
+  padding: 1.25rem;
+  border-top: 1px solid var(--admin-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.admin-loading, .admin-error-msg {
+  padding: 2rem;
+  text-align: center;
+  color: #64748b;
+}
+
+.admin-error-msg {
+  color: #dc2626;
+  background: #fee2e2;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.um-id-cell {
+  font-family: monospace;
+  color: #64748b;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.um-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.um-view {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--admin-accent);
+  font: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.um-view:hover {
+  filter: brightness(0.95);
+}
+
+.um-lock {
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.um-lock:hover {
+  filter: brightness(1.05);
+}
+
+.um-lock:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
