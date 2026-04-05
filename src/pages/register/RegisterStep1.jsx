@@ -12,8 +12,6 @@ export default function RegisterStep1() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
 
-  // Basic client-side validation before moving to next step
-
   function handleNext(e) {
     e.preventDefault()
     setError('')

@@ -97,6 +97,17 @@
   opacity: 0.9;
 }
 
+.landing__nav-logout {
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  padding-left: clamp(16px, 2.5vw, 32px);
+  margin-left: clamp(4px, 1vw, 12px);
+}
+
+.landing__nav-logout:hover {
+  opacity: 0.85;
+  text-decoration: underline;
+}
+
 .landing__nav-cta {
   display: inline-flex;
   align-items: center;
