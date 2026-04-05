@@ -1,0 +1,229 @@
+/* Chân trang dùng chung (landing + auth). Biến gắn trực tiếp lên .landing__footer. */
+
+.landing__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.landing__footer {
+  --navy: #313468;
+  --white: #ffffff;
+  --footer-muted: #d9d9d9;
+  --cta-sky: #1187d0;
+  --font-montserrat: 'Montserrat', system-ui, sans-serif;
+  --font-montserrat-alt: 'Montserrat Alternates', 'Montserrat', system-ui,
+    sans-serif;
+
+  background: var(--navy);
+  color: var(--white);
+  padding: 140px 0 56px;
+  min-height: 763px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+
+.landing__footer-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.landing__container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 9.5vw, 181px);
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.landing__footer-top {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.35fr) minmax(160px, 1fr) minmax(
+      160px,
+      1fr
+    );
+  gap: clamp(40px, 5vw, 100px);
+  align-items: start;
+}
+
+.landing__footer-logo {
+  font-family: var(--font-montserrat-alt);
+  font-weight: 600;
+  font-size: clamp(40px, 3.33vw, 64px);
+  line-height: 1.1;
+  color: var(--white);
+  margin: 0 0 20px;
+}
+
+.landing__footer-desc {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-size: clamp(18px, 1.25vw, 24px);
+  line-height: 40px;
+  color: var(--footer-muted);
+  margin: 0;
+  max-width: 552px;
+}
+
+.landing__footer-heading {
+  font-family: var(--font-montserrat-alt);
+  font-weight: 600;
+  font-size: clamp(24px, 1.875vw, 36px);
+  line-height: 28px;
+  color: var(--white);
+  margin: 0 0 28px;
+}
+
+.landing__footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.landing__footer-links a {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-size: clamp(18px, 1.25vw, 24px);
+  line-height: 40px;
+  color: var(--footer-muted);
+  text-decoration: none;
+  max-width: 330px;
+  display: inline-block;
+}
+
+.landing__footer-links a:hover {
+  color: var(--white);
+}
+
+.landing__footer-newsletter {
+  margin-top: 64px;
+  max-width: 756px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.landing__footer-newsletter-text {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-size: clamp(18px, 1.25vw, 24px);
+  line-height: 40px;
+  color: var(--footer-muted);
+  margin: 0 0 20px;
+}
+
+.landing__footer-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.landing__footer-email-label {
+  flex: 1 1 280px;
+  min-width: 200px;
+  max-width: 490px;
+}
+
+.landing__footer-input {
+  width: 100%;
+  height: 59px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: 1px solid var(--footer-muted);
+  background: rgba(217, 217, 217, 0);
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 40px;
+  color: var(--white);
+  outline: none;
+}
+
+.landing__footer-input::placeholder {
+  color: var(--footer-muted);
+}
+
+.landing__footer-input:focus-visible {
+  border-color: var(--cta-sky);
+  box-shadow: 0 0 0 1px var(--cta-sky);
+}
+
+.landing__footer-submit {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 220px;
+  min-height: 59px;
+  border: none;
+  border-radius: 10px;
+  background: var(--cta-sky);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.landing__footer-submit:hover {
+  filter: brightness(1.06);
+}
+
+.landing__footer-rule {
+  margin-top: 56px;
+  margin-bottom: 28px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.landing__footer-rule img {
+  width: 100%;
+  max-width: 1550px;
+  height: auto;
+  display: block;
+}
+
+.landing__footer-copy {
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  font-size: clamp(18px, 1.25vw, 24px);
+  line-height: 40px;
+  color: var(--footer-muted);
+  text-align: center;
+  margin: 0;
+  max-width: 461px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .landing__footer {
+    padding-top: 80px;
+    min-height: 0;
+  }
+
+  .landing__footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .landing__footer-newsletter {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .landing__footer-submit {
+    max-width: none;
+  }
+}
