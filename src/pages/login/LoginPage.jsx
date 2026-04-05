@@ -1,50 +1,65 @@
-import { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import AuthLayout from '../../layouts/AuthLayout'
-import { login as loginRequest } from '../../services/authService'
-import './loginPage.css'
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthLayout from "../../layouts/AuthLayout";
+import { login as loginRequest } from "../../services/authService";
+import { getProfileMe } from "../../services/userService";
+import "./loginPage.css";
 
 function mapErrorMessage(message) {
-  if (message === 'Invalid credentials') {
-    return 'Email hoặc mật khẩu không đúng.'
+  if (message === "Invalid credentials") {
+    return "Email hoặc mật khẩu không đúng.";
   }
-  if (message === 'User is blocked') {
-    return 'Tài khoản đã bị khóa.'
+  if (message === "User is blocked") {
+    return "Tài khoản đã bị khóa.";
   }
-  return message
-} // map error messages from backend to user-friendly messages
+  return message;
+}
 
 export default function LoginPage() {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [info, setInfo] = useState('')
-  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [info, setInfo] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (location.state?.registered) {
-      setInfo('Đăng ký thành công. Vui lòng đăng nhập.')
+      setInfo("Đăng ký thành công. Vui lòng đăng nhập.");
     }
-  }, [location.state])
+  }, [location.state]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setError('')
-    setInfo('')
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setInfo("");
+    setLoading(true);
     try {
-      await loginRequest({ email: email.trim(), password })
-      const to = location.state?.from || '/'
-      navigate(to, { replace: true })
+      await loginRequest({ email: email.trim(), password });
+      const profileData = await getProfileMe();
+      const userId =
+        profileData?.result?.user?.id ||
+        profileData?.user?.id ||
+        profileData?.userId;
+
+      if (userId) {
+        localStorage.setItem("userId", userId);
+      } else {
+        console.error("Dữ liệu Profile trả về:", profileData);
+        throw new Error(
+          "Đăng nhập thành công nhưng không lấy được ID người dùng.",
+        );
+      } // Bước 4: Chuyển hướng về trang chủ hoặc trang trước đó
+
+      const to = location.state?.from || "/";
+      navigate(to, { replace: true });
     } catch (err) {
-      setError(mapErrorMessage(err.message || 'Đăng nhập thất bại'))
+      setError(mapErrorMessage(err.message || "Đăng nhập thất bại"));
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
-
   return (
     <AuthLayout>
       <div className="login-page" data-name="Login" data-node-id="22:38">
@@ -96,7 +111,7 @@ export default function LoginPage() {
               type="submit"
               disabled={loading}
             >
-              {loading ? 'Đang xử lý…' : 'Đăng nhập'}
+              {loading ? "Đang xử lý…" : "Đăng nhập"}
             </button>
             <div className="login-page__links">
               <a href="#">Quên mật khẩu</a>
@@ -108,5 +123,5 @@ export default function LoginPage() {
         </div>
       </div>
     </AuthLayout>
-  )
+  );
 }

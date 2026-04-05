@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { logout as logoutRequest } from '../../services/authService'
+import { getStoredUserId } from '../../store/slice/postUtils'
 import SiteFooter from '../../components/layout/SiteFooter'
 import './LandingPage.css'
 
@@ -10,6 +13,36 @@ const ASSETS = {
 }
 
 export default function LandingPage() {
+  const navigate = useNavigate()
+  const [loggedIn, setLoggedIn] = useState(() => Boolean(getStoredUserId()))
+
+  useEffect(() => {
+    function syncAuth() {
+      setLoggedIn(Boolean(getStoredUserId()))
+    }
+    window.addEventListener('storage', syncAuth)
+    window.addEventListener('focus', syncAuth)
+    return () => {
+      window.removeEventListener('storage', syncAuth)
+      window.removeEventListener('focus', syncAuth)
+    }
+  }, [])
+
+  async function handleLogout() {
+    try {
+      await logoutRequest()
+    } catch {
+      /* vẫn xóa phiên cục bộ */
+    }
+    try {
+      localStorage.removeItem('userId')
+    } catch {
+      /* ignore */
+    }
+    setLoggedIn(false)
+    navigate('/', { replace: true })
+  }
+
   return (
     <div className="landing" data-name="LandingPage" data-node-id="22:10">
       <div className="landing__hero-wrap">
@@ -29,12 +62,30 @@ export default function LandingPage() {
               <Link className="landing__nav-link" to="/">
                 Trang chủ
               </Link>
-              <Link className="landing__nav-link" to="/login">
-                Đăng nhập
+              <Link className="landing__nav-link" to="/posts">
+                Bài viết
               </Link>
-              <Link className="landing__nav-cta" to="/register">
-                Đăng ký
+              <Link className="landing__nav-link" to="/phan-tich">
+                Phân tích
               </Link>
+              {loggedIn ? (
+                <button
+                  type="button"
+                  className="landing__nav-link landing__nav-logout"
+                  onClick={handleLogout}
+                >
+                  Đăng xuất
+                </button>
+              ) : (
+                <>
+                  <Link className="landing__nav-link" to="/login">
+                    Đăng nhập
+                  </Link>
+                  <Link className="landing__nav-cta" to="/register">
+                    Đăng ký
+                  </Link>
+                </>
+              )}
             </nav>
           </header>
 

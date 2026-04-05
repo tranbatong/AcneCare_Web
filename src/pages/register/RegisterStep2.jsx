@@ -14,7 +14,7 @@ function mapRegisterError(message) {
   return message
 }
 
-/** API: gender true = Nam, false = Nữ (boolean Java). *///
+/** API: gender true = Nam, false = Nữ (boolean Java). */
 export default function RegisterStep2() {
   const navigate = useNavigate()
   const location = useLocation()
