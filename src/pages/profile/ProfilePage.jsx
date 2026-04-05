@@ -10,7 +10,7 @@ function mapErr(message) {
   if (message === 'User profile not found') return 'Chưa có hồ sơ người dùng.'
   return message
 }
-
+// Map error messages from backend to user-friendly messages
 export default function ProfilePage() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
