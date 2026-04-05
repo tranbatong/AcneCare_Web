@@ -1,0 +1,189 @@
+/* Form đăng nhập — Figma node 22:38 */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px clamp(16px, 4vw, 24px) 64px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  color-scheme: light;
+  color: #111111;
+}
+
+.login-page__title {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 48px);
+  color: #000000;
+  text-align: center;
+  margin: 0 0 28px;
+  line-height: 1.15;
+}
+
+.login-page__card {
+  width: 100%;
+  max-width: min(658px, 100%);
+  background: #dedede;
+  border-radius: 45px;
+  padding: 44px clamp(20px, 6vw, 96px) 36px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.login-page__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-page__field {
+  width: 100%;
+  max-width: 465px;
+}
+
+.login-page__field + .login-page__field {
+  margin-top: 24px;
+}
+
+.login-page__label {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #000000;
+  display: block;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.login-page__input {
+  width: 100%;
+  height: 50px;
+  border-radius: 40px;
+  border: none;
+  padding: 0 22px;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  color: #1a1a1a;
+  caret-color: #0768d7;
+  color-scheme: light;
+  -webkit-text-fill-color: #1a1a1a;
+}
+
+.login-page__input::placeholder {
+  color: #6b6b6b;
+  opacity: 1;
+  -webkit-text-fill-color: #6b6b6b;
+}
+
+.login-page__input:-webkit-autofill,
+.login-page__input:-webkit-autofill:hover,
+.login-page__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a;
+  box-shadow: 0 0 0 1000px #fffdfd inset;
+  transition: background-color 9999s ease-out;
+}
+
+.login-page__field--password .login-page__input:-webkit-autofill,
+.login-page__field--password .login-page__input:-webkit-autofill:hover,
+.login-page__field--password .login-page__input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px #ffffff inset;
+}
+
+.login-page__input:focus-visible {
+  box-shadow: 0 0 0 2px #0768d7;
+}
+
+.login-page__field--email .login-page__input {
+  background: #fffdfd;
+}
+
+.login-page__field--password .login-page__input {
+  background: #ffffff;
+}
+
+.login-page__error {
+  width: 100%;
+  max-width: 465px;
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(176, 0, 32, 0.08);
+  color: #8b0000;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.login-page__info {
+  width: 100%;
+  max-width: 465px;
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(7, 104, 215, 0.1);
+  color: #054a94;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.login-page__submit {
+  width: 100%;
+  max-width: 465px;
+  height: 50px;
+  margin-top: 24px;
+  border: none;
+  border-radius: 45px;
+  background: #0768d7;
+  color: #ffffff;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.login-page__submit:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.login-page__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.login-page__links {
+  width: 100%;
+  max-width: 465px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-top: 22px;
+}
+
+.login-page__links a {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.login-page__links a:hover {
+  text-decoration: underline;
+}
+
+.login-page__links-note {
+  text-align: right;
+}
