@@ -12,7 +12,7 @@ function mapErrorMessage(message) {
     return 'Tài khoản đã bị khóa.'
   }
   return message
-}
+} // map error messages from backend to user-friendly messages
 
 export default function LoginPage() {
   const navigate = useNavigate()
